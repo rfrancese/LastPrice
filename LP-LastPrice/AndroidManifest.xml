@@ -22,6 +22,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.lp_lastprice.Login"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="com.example.lp_lastprice.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lp_lastprice.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.Offerte"
+            android:label="@string/title_activity_offerte"
+            android:parentActivityName="com.example.lp_lastprice.Login" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lp_lastprice.Login" />
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.Registrazione"
+            android:label="@string/title_activity_registrazione"
+            android:parentActivityName="com.example.lp_lastprice.Login" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lp_lastprice.Login" />
+        </activity>
     </application>
 
 </manifest>

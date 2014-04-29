@@ -11,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
-
-public class MainActivity extends Activity {
+public class Login extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_login);
+
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
 
@@ -55,13 +55,17 @@ public class MainActivity extends Activity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_login,
+					container, false);
 			return rootView;
 		}
 	}
-	public void createLogin(View view){
-		Intent intent = new Intent (this,Login.class);
+	public void accesso(View view){
+		Intent intent = new Intent(this, Offerte.class);
+		startActivity(intent);
+	}
+	public void registrati(View view){
+		Intent intent = new Intent(this, Registrazione.class);
 		startActivity(intent);
 	}
 }
