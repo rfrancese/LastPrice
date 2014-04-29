@@ -64,4 +64,8 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent (this,Login.class);
 		startActivity(intent);
 	}
+	public void openOffer(View view){
+		Intent intent=new Intent (this, Offerta.class);
+		startActivity(intent);
+		}
 }

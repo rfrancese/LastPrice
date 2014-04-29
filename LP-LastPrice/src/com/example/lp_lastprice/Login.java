@@ -61,7 +61,7 @@ public class Login extends Activity {
 		}
 	}
 	public void accesso(View view){
-		Intent intent = new Intent(this, Offerte.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 	}
 	public void registrati(View view){

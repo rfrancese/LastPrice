@@ -24,5 +24,6 @@
     <string name="title_activity_login">LP - LastPrice</string>
     <string name="title_activity_offerte">Offerte</string>
     <string name="title_activity_registrazione">Registrazione</string>
+    <string name="title_activity_offerta">Offerta</string>
 
 </resources>
