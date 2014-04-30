@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/button1"
         android:layout_marginBottom="56dp"
-        android:text="Login"
+        android:text="@string/login"
         android:onClick="createLogin"
          />
 
@@ -33,7 +33,7 @@
         android:layout_above="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
-        android:text="Offerte"
+        android:text="@string/offerte"
         android:onClick="openOffer" />
 
     <ImageView
@@ -42,7 +42,8 @@
         android:layout_height="150dp"
         android:layout_above="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/title_activity_login"
         android:src="@drawable/mrk" />
 
 </RelativeLayout>

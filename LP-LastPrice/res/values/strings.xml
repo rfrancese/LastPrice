@@ -22,8 +22,9 @@
     <string name="intro">Benvenuti su LastPrice </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LP - LastPrice</string>
-    <string name="title_activity_offerte">Offerte</string>
+    <string name="offerte">Offerte</string>
     <string name="title_activity_registrazione">Registrazione</string>
     <string name="title_activity_offerta">Offerta</string>
+    <string name="registrati">Registrati</string>
 
 </resources>

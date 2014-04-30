@@ -11,7 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/lp"
-        android:logo="@drawable/mrk"
+        android:logo="@drawable/lp"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name="com.example.lp_lastprice.Offerte"
-            android:label="@string/title_activity_offerte"
+            android:label="@string/offerte"
             android:parentActivityName="com.example.lp_lastprice.Login" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
