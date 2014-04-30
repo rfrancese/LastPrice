@@ -26,5 +26,11 @@
     <string name="title_activity_registrazione">Registrazione</string>
     <string name="title_activity_offerta">Offerta</string>
     <string name="registrati">Registrati</string>
+    <string name="confermar">Conferma</string>
+    <string name="benvenuto">Benvenuto su Last Price</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_seller">SellerActivity</string>
+    <string name="title_activity_new_offer">NewOfferActivity</string>
+    <string name="title_activity_add_offer">AddOfferActivity</string>
 
 </resources>

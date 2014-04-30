@@ -61,11 +61,15 @@ public class Login extends Activity {
 		}
 	}
 	public void accesso(View view){
-		Intent intent = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, WelcomeActivity.class);
 		startActivity(intent);
 	}
 	public void registrati(View view){
 		Intent intent = new Intent(this, Registrazione.class);
+		startActivity(intent);
+	}
+	public void gestioneOfferte(View view){
+		Intent intent=new Intent(this, SellerActivity.class);
 		startActivity(intent);
 	}
 }

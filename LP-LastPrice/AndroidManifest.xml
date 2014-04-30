@@ -11,8 +11,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/lp"
-        android:logo="@drawable/lp"
         android:label="@string/app_name"
+        android:logo="@drawable/lp"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.lp_lastprice.MainActivity"
@@ -54,6 +54,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.lp_lastprice.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.SellerActivity"
+            android:label="@string/title_activity_seller" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.NewOfferActivity"
+            android:label="@string/title_activity_new_offer" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.AddOfferActivity"
+            android:label="@string/title_activity_add_offer" >
         </activity>
     </application>
 

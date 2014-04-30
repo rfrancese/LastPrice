@@ -11,12 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
-public class Registrazione extends Activity {
+public class SellerActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_registrazione);
+		setContentView(R.layout.activity_seller);
 
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
@@ -28,7 +28,7 @@ public class Registrazione extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.registrazione, menu);
+		getMenuInflater().inflate(R.menu.seller, menu);
 		return true;
 	}
 
@@ -55,13 +55,13 @@ public class Registrazione extends Activity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_registrazione,
+			View rootView = inflater.inflate(R.layout.fragment_seller,
 					container, false);
 			return rootView;
 		}
 	}
-		public void welcome(View view){
-			Intent intent=new Intent(this, WelcomeActivity.class);
+		public void openForm(View view){
+			Intent intent = new Intent(this, AddOfferActivity.class);
 			startActivity(intent);
 		}
 }
