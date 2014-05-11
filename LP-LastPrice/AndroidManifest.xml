@@ -99,6 +99,14 @@
             android:name="com.example.lp_lastprice.Registrazione2Activity"
             android:label="@string/title_activity_registrazione2" >
         </activity>
+        <activity
+            android:name="com.example.lp_lastprice.CategoriaActivity"
+            android:label="@string/title_activity_categoria" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.PagamentiActivity"
+            android:label="@string/title_activity_pagamenti" >
+        </activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.lp_lastprice;
 
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,5 +24,7 @@ public class Offerta extends ListActivity {
   protected void onListItemClick(ListView l, View v, int position, long id) {
     String item = (String) getListAdapter().getItem(position);
     Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+    Intent intent =new Intent(this,CategoriaActivity.class);
+    startActivity(intent);
   }
 } 

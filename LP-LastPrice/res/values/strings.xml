@@ -39,7 +39,10 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="avanti">Avanti</string>
     <string name="title_activity_registrazione2">Registrazione2Activity</string>
-	<string name="tipo_account">Tipologia Account</string>
-	<string name="p.iva">Partita Iva</string>
-	<string name="numerocarta">Numero Carta</string>
+    <string name="tipo_account">Tipologia Account</string>
+    <string name="p.iva">Partita Iva</string>
+    <string name="numerocarta">Numero Carta</string>
+    <string name="title_activity_categoria">CategoriaActivity</string>
+    <string name="title_activity_pagamenti">PagamentiActivity</string>
+
 </resources>
