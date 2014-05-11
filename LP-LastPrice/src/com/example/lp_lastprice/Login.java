@@ -1,6 +1,7 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
+import database.DbUsersHelper;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 public class Login extends Activity {
 
 	@Override
@@ -61,8 +65,25 @@ public class Login extends Activity {
 		}
 	}
 	public void accesso(View view){
+		EditText edit_user=(EditText)findViewById(R.id.username);
+		EditText edit_password=(EditText)findViewById(R.id.password);
+		RadioButton cliente = (RadioButton)findViewById(R.id.cliente);
+		RadioButton venditore = (RadioButton)findViewById(R.id.venditore);
+		RadioButton amministratore = (RadioButton)findViewById(R.id.amministratore);
+		int n=1;
+		if(cliente.isChecked()) n=1;
+		if(venditore.isChecked())n=2;
+		if(amministratore.isChecked())n=3;
+		String user=edit_user.getText().toString();
+		String password=edit_password.getText().toString();
+		
+		DbUsersHelper db= new DbUsersHelper(this);
+		boolean b = db.searchUser(user, password, n);
+		if(b){
 		Intent intent = new Intent(this, WelcomeActivity.class);
 		startActivity(intent);
+		}
+		else  Toast.makeText(this, "Impossibile Accedere", Toast.LENGTH_LONG).show();
 	}
 	public void registrati(View view){
 		Intent intent = new Intent(this, Registrazione.class);

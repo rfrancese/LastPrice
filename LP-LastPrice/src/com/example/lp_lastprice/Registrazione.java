@@ -11,6 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.RadioGroup;
+import database.DbUsersHelper;
+import database.Utente;
+import android.widget.RadioButton;
 public class Registrazione extends Activity {
 
 	@Override
@@ -61,7 +67,26 @@ public class Registrazione extends Activity {
 		}
 	}
 		public void welcome(View view){
-			Intent intent=new Intent(this, WelcomeActivity.class);
+			String sesso="";
+			EditText edit_name = (EditText)findViewById(R.id.editNome);
+			 EditText edit_lname = (EditText)findViewById(R.id.editCognome);
+			 EditText edit_birth = (EditText)findViewById(R.id.editData);
+			EditText edit_user = (EditText)findViewById(R.id.editUser);
+			 EditText edit_pass = (EditText)findViewById(R.id.editPassword);
+			RadioButton edit_radio = (RadioButton)findViewById(R.id.maschio);
+			RadioButton edit_radiof = (RadioButton)findViewById(R.id.femmina);
+			if (edit_radio.isChecked())sesso+="M";
+			if (edit_radiof.isChecked())sesso+="F";
+			
+		    Bundle bundle=new Bundle ();
+		    bundle.putString("nome", edit_name.getText().toString());
+		    bundle.putString("cognome", edit_lname.getText().toString());
+		    bundle.putString("nascita", edit_birth.getText().toString());
+		    bundle.putString("user", edit_user.getText().toString());
+		    bundle.putString("pw", edit_pass.getText().toString());
+		    bundle.putString("sesso", sesso);
+			
+			 Intent intent=new Intent(this, Registrazione2Activity.class);
 			startActivity(intent);
 		}
 }

@@ -1,6 +1,7 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
+import database.DbUsersHelper;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
 	}
 
 	@Override
