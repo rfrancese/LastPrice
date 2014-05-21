@@ -107,6 +107,62 @@
             android:name="com.example.lp_lastprice.PagamentiActivity"
             android:label="@string/title_activity_pagamenti" >
         </activity>
+        <activity
+            android:name="com.example.lp_lastprice.ActiveUsersActivity"
+            android:label="@string/title_activity_active_users" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.RefundsActivity"
+            android:label="@string/title_activity_refunds" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.TransactionActivity"
+            android:label="@string/title_activity_transaction" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.LastPriceActivity"
+            android:label="@string/title_activity_last_price" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.DettagliActivity"
+            android:label="@string/title_activity_dettagli" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.RipeilogoActivity"
+            android:label="@string/title_activity_ripeilogo" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.ActiveOffersActivity"
+            android:label="@string/title_activity_active_offers" >
+        </activity>
+        <activity
+            android:name="adapter.VacanzeFragment"
+            android:label="@string/title_activity_vacanze_fragment" >
+        </activity>
+        <activity
+            android:name="adapter.BenessereFragment"
+            android:label="@string/title_activity_benessere_fragment" >
+        </activity>
+        <activity
+            android:name="adapter.SportActivity"
+            android:label="@string/title_activity_sport" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.HolidayFragment"
+            android:label="@string/title_activity_holiday_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.WellnessFragment"
+            android:label="@string/title_activity_wellness_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.SportsFragment"
+            android:label="@string/title_activity_sports_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.CatActivity"
+            android:label="@string/title_activity_cat" >
+        </activity>
     </application>
 
 </manifest>

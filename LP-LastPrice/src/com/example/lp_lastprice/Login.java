@@ -76,15 +76,25 @@ public class Login extends Activity {
 		if(amministratore.isChecked())n=3;
 		String user=edit_user.getText().toString();
 		String password=edit_password.getText().toString();
-		
+		if(n==1){
 		DbUsersHelper db= new DbUsersHelper(this);
 		boolean b = db.searchUser(user, password, n);
 		if(b){
 		Intent intent = new Intent(this, WelcomeActivity.class);
 		startActivity(intent);
 		}
+		
 		else  Toast.makeText(this, "Impossibile Accedere", Toast.LENGTH_LONG).show();
-	}
+		}
+		if (n==2) {
+			Intent intent =new Intent(this, SellerActivity.class);
+			startActivity(intent);}
+		
+		if(n==3){
+			Intent intent =new Intent(this, AdminActivity.class);
+			startActivity(intent);
+		}
+		}
 	public void registrati(View view){
 		Intent intent = new Intent(this, Registrazione.class);
 		startActivity(intent);

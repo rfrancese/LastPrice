@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
  
-public class CategoriaActivity extends FragmentActivity implements
+public class CatActivity extends FragmentActivity implements
         ActionBar.TabListener {
  
     private ViewPager viewPager;
@@ -19,7 +19,7 @@ public class CategoriaActivity extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cat);
  
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);

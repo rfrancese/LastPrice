@@ -1,7 +1,6 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
-import database.DbUsersHelper;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,26 +10,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
-import android.content.Intent;
 
-public class MainActivity extends Activity {
+public class TransactionActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_transaction);
+
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.transaction, menu);
 		return true;
 	}
 
@@ -57,17 +55,10 @@ public class MainActivity extends Activity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_transaction,
+					container, false);
 			return rootView;
 		}
 	}
-	public void createLogin(View view){
-		Intent intent = new Intent (this,Login.class);
-		startActivity(intent);
-	}
-	public void openOffer(View view){
-		Intent intent=new Intent (this, CatActivity.class);
-		startActivity(intent);
-		}
+
 }

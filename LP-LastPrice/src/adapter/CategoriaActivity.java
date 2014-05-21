@@ -1,7 +1,11 @@
-package com.example.lp_lastprice;
+package adapter;
+
+
+import com.example.lp_lastprice.R;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -14,12 +18,12 @@ public class CategoriaActivity extends FragmentActivity implements
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Top Rated", "Games", "Movies" };
+    private String[] tabs = { "Vacanze", "Benessere", "Sport" };
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_categoria);
  
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);

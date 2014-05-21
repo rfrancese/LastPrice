@@ -44,5 +44,25 @@
     <string name="numerocarta">Numero Carta</string>
     <string name="title_activity_categoria">CategoriaActivity</string>
     <string name="title_activity_pagamenti">PagamentiActivity</string>
+    <string name="rimborsi">Gestione Rimborsi</string>
+    <string name="utenti">Gestione Utenti</string>
+    <string name="transazioni">Visualizza Transazioni</string>
+    <string name="title_activity_active_users">ActiveUsersActivity</string>
+    <string name="title_activity_refunds">RefundsActivity</string>
+    <string name="title_activity_transaction">TransactionActivity</string>
+    <string name="title_activity_last_price">LastPriceActivity</string>
+    <string name="acquista">Acquista</string>
+    <string name="vis_mappa">Visualizza sulla mappa</string>
+    <string name="prezzo">Prezzo</string>
+    <string name="title_activity_dettagli">DettagliActivity</string>
+    <string name="title_activity_ripeilogo">RipeilogoActivity</string>
+    <string name="title_activity_active_offers">ActiveOffersActivity</string>
+    <string name="title_activity_vacanze_fragment">VacanzeFragment</string>
+    <string name="title_activity_benessere_fragment">BenessereFragment</string>
+    <string name="title_activity_sport">SportActivity</string>
+    <string name="title_activity_holiday_fragment">HolidayFragment</string>
+    <string name="title_activity_wellness_fragment">WellnessFragment</string>
+    <string name="title_activity_sports_fragment">SportsFragment</string>
+    <string name="title_activity_cat">CatActivity</string>
 
 </resources>
