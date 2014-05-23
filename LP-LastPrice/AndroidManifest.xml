@@ -9,7 +9,7 @@
         android:targetSdkVersion="19" />
 
     <permission
-        android:name="com.vogella.android.locationapi.maps.permission.MAPS_RECEIVE"
+        android:name="com.example.lp_lastprice.android.locationapi.maps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <uses-feature
@@ -120,7 +120,7 @@
             android:label="@string/title_activity_transaction" >
         </activity>
         <activity
-            android:name="com.example.lp_lastprice.LastPriceActivity"
+            android:name="com.example.lp_lastprice.LastPriceFragment"
             android:label="@string/title_activity_last_price" >
         </activity>
         <activity
@@ -129,7 +129,8 @@
         </activity>
         <activity
             android:name="com.example.lp_lastprice.RipeilogoActivity"
-            android:label="@string/title_activity_ripeilogo" >
+            android:label="@string/title_activity_ripeilogo"
+             >
         </activity>
         <activity
             android:name="com.example.lp_lastprice.ActiveOffersActivity"
@@ -162,6 +163,18 @@
         <activity
             android:name="com.example.lp_lastprice.CatActivity"
             android:label="@string/title_activity_cat" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.SvagoFragment"
+            android:label="@string/title_activity_svago" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.RestaurantFragment"
+            android:label="@string/title_activity_restaurant" >
+        </activity>
+        <activity
+            android:name="com.example.lp_lastprice.TecnologiaFragment"
+            android:label="@string/title_activity_tecnologia" >
         </activity>
     </application>
 

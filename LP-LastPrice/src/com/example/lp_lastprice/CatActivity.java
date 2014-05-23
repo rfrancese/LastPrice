@@ -14,7 +14,7 @@ public class CatActivity extends FragmentActivity implements
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Top Rated", "Games", "Movies" };
+    private String[] tabs = { "Vacanze", "Benessere", "Sport","Svago","Ristoranti","Tecnologia","Last Price" };
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {

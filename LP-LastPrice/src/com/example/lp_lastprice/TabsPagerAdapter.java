@@ -23,6 +23,16 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         case 2:
             // Movies fragment activity
             return new SportsFragment();
+        case 3:
+        	return new HolidayFragment();
+        case 4:
+        	return new SvagoFragment();
+        case 5:
+        	return new RestaurantFragment();
+        case 6:
+        	return new TecnologiaFragment();
+        case 7:
+        	return new LastPriceFragment();
         }
  
         return null;
@@ -31,7 +41,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // get item count - equal to number of tabs
-        return 3;
+        return 7;
     }
  
 }

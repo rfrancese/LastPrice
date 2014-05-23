@@ -64,5 +64,8 @@
     <string name="title_activity_wellness_fragment">WellnessFragment</string>
     <string name="title_activity_sports_fragment">SportsFragment</string>
     <string name="title_activity_cat">CatActivity</string>
+    <string name="title_activity_svago">SvagoActivity</string>
+    <string name="title_activity_restaurant">RestaurantActivity</string>
+    <string name="title_activity_tecnologia">TecnologiaActivity</string>
 
 </resources>

@@ -83,14 +83,15 @@ public class DbUsersHelper extends SQLiteOpenHelper {
     private static final String KEY_USER = "user";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_IVA = "p.iva";
+    private static final String KEY_CARD ="n.carta";
     private static final String KEY_NAME_SHOP = "shop";
     private static final String KEY_NUM_OFF = "offerte attive";
  
-    private static final String[] COLUMNS_USERS = {KEY_ID,KEY_NAME,KEY_LNAME,KEY_SEX,KEY_BIRTH,KEY_USER,KEY_PASSWORD};
+    private static final String[] COLUMNS_USERS = {KEY_ID,KEY_NAME,KEY_LNAME,KEY_SEX,KEY_BIRTH,KEY_USER,KEY_PASSWORD,KEY_CARD};
     private static final String[] COLUMNS_SELLERS = {KEY_ID,KEY_NAME,KEY_LNAME,KEY_BIRTH,KEY_USER,KEY_PASSWORD,KEY_IVA,KEY_NAME_SHOP,KEY_NUM_OFF};
     
     public void addUser(Utente u){
-        Log.d("addTurno", u.toString());
+        Log.d("addUser", u.toString());
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
        
@@ -102,7 +103,7 @@ public class DbUsersHelper extends SQLiteOpenHelper {
         values.put(KEY_BIRTH, u.getBirth());
         values.put(KEY_USER, u.getUser());
         values.put(KEY_PASSWORD, u.getPw());
-        
+       values.put(KEY_CARD, u.getCarta());
        // get descrizione
         
  
