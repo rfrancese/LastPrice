@@ -1,6 +1,7 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
+import android.widget.Toast;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
 public class WelcomeActivity extends Activity {
-
+	SessionManagement s;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class WelcomeActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+	
 	}
 
 	@Override
@@ -64,8 +66,5 @@ public class WelcomeActivity extends Activity {
 			Intent intent = new Intent(this, Offerta.class);
 			startActivity(intent);
 		}
-		public void openMap(View view){
-			Intent intent = new Intent(this, MapsActivity.class);
-			startActivity(intent);
-		}
+		
 }

@@ -5,16 +5,20 @@ public class Offerta {
 		private String descrizione;
 		private double prezzo;
 		private String venditore;
-		private String inizio;
-		private String fine;
+		private String scadenza;
+		private String asta;
+		private String luogo;
+		private String categoria;
 		
-		private Offerta(String x, String y , double p, String v , String di,String df){
+		public Offerta(String x, String y , double p, String v , String sc,String place,String cat){
 			Nome=x;
 			descrizione=y;
 			prezzo=p;
 			venditore=v;
-			inizio=di;
-			fine=df;
+			scadenza=sc;
+			asta="no";
+			luogo=place;
+			categoria=cat;
 		}
 		public void setName(String x){
 			Nome=x;
@@ -28,11 +32,17 @@ public class Offerta {
 		public void setSeller(String x){
 			venditore=x;
 		}
-		public void setInizio(String x){
-			inizio=x;
+		public void setScadenza(String x){
+			scadenza=x;
 		}
-		public void setFine(String x){
-			fine=x;
+		public void setPlace(String x){
+			luogo=x;
+		}
+		public void setCategoria(String x){
+			categoria=x;
+		}
+		public String getPlace(){
+			return luogo;
 		}
 		
 		public String getName(){
@@ -47,11 +57,14 @@ public class Offerta {
 		public String getVenditore(){
 			return venditore;
 		}
-		public String getStart(){
-			return inizio;
-		}
-		public String getExpire(){
-			return fine;
-		}
 		
+		public String getExpire(){
+			return scadenza;
+		}
+		public void lastPrice(){
+			asta="si";
+		}
+		public String getCategoria(){
+			return categoria;
+		}
 }

@@ -7,10 +7,10 @@ public class Utente {
 			private String user;
 			private String password;
 			private String sesso;
-			private long carta;
+			private String carta;
 			private int id;
 			public Utente(){}
-			public Utente(String n, String c, String date,String sex, String us, String pw, long nc) {
+			public Utente(String n, String c, String date,String sex, String us, String pw, String nc) {
 				super();
 				nome=n;
 				cognome=c;
@@ -41,7 +41,7 @@ public class Utente {
 			public void setLastName(String x){
 				cognome=x;
 			}
-			public void setCard(long x){
+			public void setCard(String x){
 				carta=x;
 			}
 			public String getName(){
@@ -65,7 +65,7 @@ public class Utente {
 			public String getSex(){
 				return sesso;
 			}
-			public long getCarta() {
+			public String getCarta() {
 				return carta;
 			}
 }

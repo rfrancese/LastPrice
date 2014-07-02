@@ -1,5 +1,6 @@
 package com.example.lp_lastprice;
-
+import database.Offerta;
+import database.DbUsersHelper;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.os.Build;
 
 public class AddOfferActivity extends Activity {
@@ -60,5 +62,25 @@ public class AddOfferActivity extends Activity {
 			return rootView;
 		}
 	}
-
+	public void inserisci (View view){
+		DbUsersHelper db=new DbUsersHelper(this);
+		EditText edit_tit=(EditText)findViewById (R.id.titolo);
+		EditText edit_price=(EditText)findViewById (R.id.prezzo);
+		EditText edit_desc=(EditText)findViewById (R.id.Descrizione);
+		EditText edit_place=(EditText)findViewById (R.id.Luogo);
+		EditText edit_exp=(EditText)findViewById (R.id.Scadenza);
+		EditText edit_cat=(EditText)findViewById (R.id.Categoria);
+		String titolo=edit_tit.getText().toString();
+		String prezzo=edit_tit.getText().toString();
+		String descr=edit_tit.getText().toString();
+		String luogo=edit_tit.getText().toString();
+		String scadenza=edit_tit.getText().toString();
+		String categoria=edit_tit.getText().toString();
+		double price=Double.parseDouble(prezzo);
+		
+		Offerta offer=new Offerta(titolo,descr,price,"mod",scadenza,luogo,categoria);
+		db.insertOffer(offer, "no");
+		
+		
+	}
 }

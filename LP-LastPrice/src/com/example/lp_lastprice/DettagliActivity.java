@@ -2,6 +2,7 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
+import android.widget.ImageButton;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,9 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class DettagliActivity extends Activity {
 
+public class DettagliActivity extends Activity implements OnClickListener{
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +28,8 @@ public class DettagliActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		ImageButton call=(ImageButton)findViewById(R.id.Call);
+		call.setOnClickListener(this);
 	}
 
 	@Override
@@ -61,5 +68,15 @@ public class DettagliActivity extends Activity {
 			return rootView;
 		}
 	}
-
+	public void onClick(View view){
+		Intent phoneCall = new Intent(Intent.ACTION_CALL);
+		 String phNum = "tel:" + "1234567890";
+		 phoneCall.setData(Uri.parse(phNum));
+		  startActivity(phoneCall) ;
+	}
+	public void openMaps(View view){
+	 Intent intent = new Intent(this,MappaActivity.class);
+	 startActivity(intent);
+ 
+}
 }

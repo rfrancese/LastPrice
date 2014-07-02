@@ -23,15 +23,14 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         case 2:
             
             return new SportsFragment();
+        
         case 3:
-        	return new HolidayFragment();
-        case 4:
         	return new SvagoFragment();
-        case 5:
+        case 4:
         	return new RestaurantFragment();
-        case 6:
+        case 5:
         	return new TecnologiaFragment();
-        case 7:
+        case 6:
         	return new LastPriceFragment();
         }
  

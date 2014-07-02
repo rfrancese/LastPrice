@@ -13,10 +13,18 @@ import android.util.Log;
  
 public class DbUsersHelper extends SQLiteOpenHelper {
 	   private static final String TABLE_USERS = "utenti";
+	   private static final String TABLE_SELLERS = "venditori";
+	   private static final String TABLE_ADMIN = "amministratori";
+	   private static final String TABLE_TRANSACTION = "vendite";
+	   private static final String TABLE_REFUND = "rimborsi";
+	   private static final String TABLE_LP = "asta";
+	   private static final String TABLE_OFFERS= "offerte";
+	   
+	   
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "LastPrice2";
+    private static final String DATABASE_NAME = "LastPrice3";
  
     public DbUsersHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
@@ -26,26 +34,26 @@ public class DbUsersHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create book table
         String CREATE_USER_TABLE = "CREATE TABLE utenti ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-                "nome TEXT, "+"cognome TEXT,"+"sesso TEXT,"+"data_nascita TEXT,"+"user TEXT,"+"password TEXT," + "numero_carta LONG)";
+                "user TEXT PRIMARY KEY , " + 
+                "nome TEXT, "+"cognome TEXT,"+"sesso TEXT,"+"data_nascita TEXT,"+"password TEXT," + "numero_carta LONG)";
         String CREATE_SELLERS_TABLE = "CREATE TABLE venditori ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-                "nome TEXT, "+"cognome TEXT,"+ "sesso TEXT," + "data_nascita TEXT,"+"user TEXT,"+"password TEXT,"+"partita_iva TEXT,"+"nome_attività TEXT,"+"numero_offerte INTEGER," + "numero_carta LONG)";
+                "user TEXT PRIMARY KEY , " + 
+                "nome TEXT, "+"cognome TEXT,"+ "sesso TEXT," + "data_nascita TEXT,"+"password TEXT,"+"partita_iva TEXT,"+"nome_attività TEXT,"+"numero_offerte INTEGER," + "numero_carta LONG)";
         String CREATE_ADMIN_TABLE="CREATE TABLE amministratori (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-        		"nome TEXT," + "cognome TEXT, " + "sesso TEXT," + "data_nascita TEXT," + "user TEXT, " + "password TEXT," + "numero_carta LONG)";
+                "user TEXT PRIMARY KEY , " +
+        		"nome TEXT," + "cognome TEXT, " + "sesso TEXT," + "data_nascita TEXT," + "password TEXT," + "numero_carta LONG)";
         String CREATE_PAYMENTS_TABLE="CREATE TABLE vendite (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-        		"descr_offerta TEXT," + "id_utente INTEGER, " + "id_venditore INTEGER," + "data_acquisto TEXT," + "prenotato TEXT, " + "pagato TEXT)";
+        		"descr_offerta TEXT," + "user_utente TEXT, " + "user_venditore TEXT," + "data_acquisto TEXT," + "prenotato TEXT, " + "pagato TEXT)";
         String CREATE_REFUND_TABLE="CREATE TABLE rimborsi (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-        		"id_utente INTEGER," + "id_venditore INTEGER, " + "causale TEXT," + "id_amministratore INTEGER)";
+        		"user_utente TEXT," + "user_venditore TEXT, " + "causale TEXT," + "user_amministratore TEXT)";
         String CREATE_LASTPRICE_TABLE="CREATE TABLE asta (" +
         		"id INTEGER PRIMARY KEY AUTOINCREMENT," +
-        		"id_venditore INTEGER," + "id_offerta INTEGER," + "scadenza TEXT," + "prezzo_base FLOAT)";
+        		"user_venditore TEXT," + "user_offerta TEXT," + "scadenza TEXT," + "prezzo_base FLOAT)";
         String CREATE_OFFERTS_TABLE="CREATE TABLE offerte (" +
         		"id INTEGER PRIMARY KEY AUTOINCREMENT," +
-        		"descrizione TEXT," + "luogo TEXT," + "id_venditore INTEGER," + "data_scadenza TEXT," + "asta TEXT)";
+        		"descrizione TEXT," + "luogo TEXT," + "user_venditore TEXT," + "data_scadenza TEXT," + "asta TEXT)";
         // create books table
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_SELLERS_TABLE);
@@ -73,7 +81,7 @@ public class DbUsersHelper extends SQLiteOpenHelper {
  
     // Books table name
  
-    private static final String TABLE_SELLERS = "venditori";
+   
     // Books Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "nome";
@@ -82,50 +90,90 @@ public class DbUsersHelper extends SQLiteOpenHelper {
     private static final String KEY_BIRTH = "data_nascita";
     private static final String KEY_USER = "user";
     private static final String KEY_PASSWORD = "password";
-    private static final String KEY_IVA = "p.iva";
-    private static final String KEY_CARD ="n.carta";
+    private static final String KEY_IVA = "partita_iva";
+    private static final String KEY_CARD ="numero_carta";
     private static final String KEY_NAME_SHOP = "shop";
     private static final String KEY_NUM_OFF = "offerte attive";
- 
-    private static final String[] COLUMNS_USERS = {KEY_ID,KEY_NAME,KEY_LNAME,KEY_SEX,KEY_BIRTH,KEY_USER,KEY_PASSWORD,KEY_CARD};
-    private static final String[] COLUMNS_SELLERS = {KEY_ID,KEY_NAME,KEY_LNAME,KEY_BIRTH,KEY_USER,KEY_PASSWORD,KEY_IVA,KEY_NAME_SHOP,KEY_NUM_OFF};
+    private static final String KEY_DESCRIPTION="descrizione";
+    private static final String KEY_LUOGO="luogo";
+    private static final String KEY_SCADENZA="data_scadenza";
+    private static final String KEY_ASTA="asta";
+    private static final String KEY_USR_SEL="user_venditore";
     
-    public void addUser(Utente u){
+    private static final String[] COLUMNS_USERS = {KEY_USER,KEY_NAME,KEY_LNAME,KEY_SEX,KEY_BIRTH,KEY_PASSWORD,KEY_CARD};
+    private static final String[] COLUMNS_SELLERS = {KEY_USER,KEY_NAME,KEY_LNAME,KEY_BIRTH,KEY_PASSWORD,KEY_IVA,KEY_NAME_SHOP,KEY_NUM_OFF};
+    private static final String[] COLUMNS_ADMIN = {KEY_USER,KEY_NAME,KEY_LNAME,KEY_BIRTH,KEY_PASSWORD,KEY_CARD};
+    
+    public void addUser(Utente u,int n){
         Log.d("addUser", u.toString());
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
        
         // 2. create ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
+        
         values.put(KEY_NAME, u.getName());
         values.put(KEY_LNAME, u.getLastName());
         values.put(KEY_SEX, u.getSex());
         values.put(KEY_BIRTH, u.getBirth());
         values.put(KEY_USER, u.getUser());
         values.put(KEY_PASSWORD, u.getPw());
-       values.put(KEY_CARD, u.getCarta());
+       
        // get descrizione
-        
- 
-        // 3. insert
+       
+     if(n==1){
+    	 values.put(KEY_CARD, u.getCarta());// se devo inserire nel db Utente
         db.insert(TABLE_USERS, // table
                 null, //nullColumnHack
                 values); // key/value -> keys = column names/ values = column values
- 
+     }
+     if(n==2){
+    	 values.put(KEY_IVA, u.getCarta());// se devo inserire nel db Utente
+         db.insert(TABLE_SELLERS, // table
+                 null, //nullColumnHack
+                 values); // key/value -> keys = column names/ values = column values
+      }
+     if(n==3){
+    	 values.put(KEY_CARD, u.getCarta());// se devo inserire nel db Utente
+         db.insert(TABLE_ADMIN, // table
+                 null, //nullColumnHack
+                 values); // key/value -> keys = column names/ values = column values
+      }
         // 4. close
       
         db.close(); 
     }
- 
-    public Utente getUser(int id){
+    public void insertOffer(Offerta of,String asta){
+    	 SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues values = new ContentValues();
+        
+         // 2. create ContentValues to add key "column"/value
+         
+         values.put(KEY_DESCRIPTION, of.getDesc());
+         values.put(KEY_LUOGO, of.getDesc());
+         values.put(KEY_USR_SEL, of.getVenditore());
+         values.put(KEY_SCADENZA, of.getExpire());
+         values.put(KEY_ASTA, asta );
+        
+        
+        // get descrizione
+        
+      
+     	
+         db.insert(TABLE_OFFERS, // table
+                 null, //nullColumnHack
+                 values); // key/value -> keys = column names/ values = column values
+      
+    }
+    public Utente getUser(String user){
  
         // 1. get reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
  
         // 2. build query
         Cursor cursor =  db.query(TABLE_USERS, COLUMNS_USERS, // b. column names
-                " id = ?", // c. selections 
-                new String[] { String.valueOf(id) }, // d. selections args
+                " user = ?", // c. selections 
+                new String[] { String.valueOf(user) }, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by
@@ -133,7 +181,7 @@ public class DbUsersHelper extends SQLiteOpenHelper {
  
         // 3. if we got results get the first one
         if (cursor != null)
-            cursor.moveToFirst();
+        {   cursor.moveToFirst();
  
         // 4. build book object
        Utente utente = new Utente();
@@ -143,10 +191,12 @@ public class DbUsersHelper extends SQLiteOpenHelper {
         utente.setBirth(cursor.getString(3));
         utente.setUser(cursor.getString(4));
         utente.setPw(cursor.getString(5));
-        Log.d("getBook("+id+")", utente.toString());
+      
  
         // 5. return book
         return utente;
+        }
+        else return null;
     }
  
     // Get All Books
@@ -170,7 +220,7 @@ public class DbUsersHelper extends SQLiteOpenHelper {
         int i = db.update(TABLE_USERS, //table
                 values, // column/value
                 KEY_ID+" = ?", // selections
-                new String[] { String.valueOf(u.getId()) }); //selection args
+                new String[] { String.valueOf(u.getUser()) }); //selection args
  
         // 4. close
         db.close();

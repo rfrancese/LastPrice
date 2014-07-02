@@ -1,5 +1,5 @@
 package com.example.lp_lastprice;
-
+import database.*;
 import android.app.Activity;
 import database.DbUsersHelper;
 import android.app.ActionBar;
@@ -16,12 +16,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 public class Login extends Activity {
-
+	private SessionManagement session;	
+	private DbUsersHelper db=new DbUsersHelper(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
+		
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -76,21 +77,24 @@ public class Login extends Activity {
 		if(amministratore.isChecked())n=3;
 		String user=edit_user.getText().toString();
 		String password=edit_password.getText().toString();
+	
 		if(n==1){
-		DbUsersHelper db= new DbUsersHelper(this);
-		boolean b = db.searchUser(user, password, n);
+		boolean b=db.searchUser(user, password, n);
 		if(b){
+		session.createLoginSession(user, "info@root.com");
 		Intent intent = new Intent(this, WelcomeActivity.class);
 		startActivity(intent);
 		}
 		
 		else  Toast.makeText(this, "Impossibile Accedere", Toast.LENGTH_LONG).show();
-		}
+	}
 		if (n==2) {
+			session.createLoginSession(user, "info@root.com");
 			Intent intent =new Intent(this, SellerActivity.class);
 			startActivity(intent);}
 		
 		if(n==3){
+			session.createLoginSession(user, "info@root.com");
 			Intent intent =new Intent(this, AdminActivity.class);
 			startActivity(intent);
 		}
