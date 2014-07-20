@@ -9,8 +9,12 @@ public class Utente {
 			private String sesso;
 			private String carta;
 			private int id;
+			private String telefono;
+			private String email;
+			private String indirizzo;
+			private String credito;
 			public Utente(){}
-			public Utente(String n, String c, String date,String sex, String us, String pw, String nc) {
+			public Utente(String n, String c, String date,String sex, String us, String pw, String nc,String tel,String mail,String address) {
 				super();
 				nome=n;
 				cognome=c;
@@ -19,6 +23,34 @@ public class Utente {
 				password=pw;
 				sesso=sex;
 				carta=nc;
+				telefono=tel;
+				email=mail;
+				indirizzo=address;
+				credito="0";
+			}
+			public void addCredito(double x){
+				credito+=x;
+			}
+			public String getCredito(){
+				return credito;
+			}
+			public void setAddress(String x){
+				indirizzo=x;
+			}
+			public String getAddress(){
+				return indirizzo;
+			}
+			public void setMail(String x){
+				email=x;
+			}
+			public void setTelephone(String x){
+				telefono =x;
+			}
+			public String getMail(){
+				return email;
+			}
+			public String getTel(){
+				return telefono;
 			}
 			public void setId(int x){
 				id=x;

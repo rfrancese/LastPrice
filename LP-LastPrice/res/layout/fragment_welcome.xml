@@ -21,17 +21,28 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="50dp"
-        android:text="Vai al catalogo"
-        android:onClick="openCat"/>
+        android:onClick="openCat"
+        android:text="Vai al catalogo" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_below="@+id/button1"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="143dp"
+        android:onClick="logout"
+        android:text="Logout" />
+
+    <Button
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="50dp"
-        android:text="Posizione" 
-        android:onClick="openMap"/>
+        android:layout_marginTop="48dp"
+        android:onClick="openForm"
+        android:text="Rimborso" />
 
 </RelativeLayout>

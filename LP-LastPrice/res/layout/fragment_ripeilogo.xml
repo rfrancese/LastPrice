@@ -26,82 +26,80 @@
         android:id="@+id/nome_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="60dp"
+        android:text="ciao"
          />
 
     <TextView
         android:id="@+id/cognome_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nome_r"
-        android:layout_below="@+id/nome_r"
-        android:layout_marginTop="18dp"
+      android:layout_marginLeft="18dp"
+        android:layout_marginTop="80dp"
+        android:text="ciao"
         />
 
     <TextView
         android:id="@+id/data_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/cognome_r"
-        android:layout_below="@+id/cognome_r"
-        android:layout_marginTop="23dp"
+       android:layout_marginLeft="18dp"
+        android:layout_marginTop="100dp"
+        android:text="ciao"
          />
 
     <TextView
         android:id="@+id/sesso_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/data_r"
-        android:layout_below="@+id/data_r"
-        android:layout_marginTop="26dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="120dp"
+        android:text="ciao"
         />
 
     <TextView
         android:id="@+id/user_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/sesso_r"
-        android:layout_below="@+id/sesso_r"
-        android:layout_marginTop="23dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="140dp"
+        android:text="ciao"
        />
 
     <TextView
         android:id="@+id/password_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/user_r"
-        android:layout_below="@+id/user_r"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+      android:layout_marginLeft="18dp"
+        android:layout_marginTop="160dp"
+        android:text="ciao"/>
 
     <TextView
         android:id="@+id/carta_iva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/password_r"
-        android:layout_below="@+id/password_r"
-        android:layout_marginTop="26dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="180dp"
+        android:text="ciao"
          />
 
-    <TextView
-        android:id="@+id/account_r"
+<TextView
+        android:id="@+id/telefono_r"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/carta_iva"
-        android:layout_below="@+id/carta_iva"
-        android:layout_marginTop="29dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="220dp"
+        android:text="ciao"
          />
-
+    
     <Button
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="18dp"
+       
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="200dp"
         android:text="Procedi"
         android:onClick="welcome" />
 

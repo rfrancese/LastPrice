@@ -1,5 +1,6 @@
 package com.example.lp_lastprice;
 import android.app.ActionBar;
+import android.view.MenuItem;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -8,13 +9,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
- 
+import android.widget.Toast;
+// Action bar menu offerte 
 public class CatActivity extends FragmentActivity implements
         ActionBar.TabListener {
- 
+	private int scelta=0;
+	private String user="";
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
+    private Bundle bundle;
     // Tab titles
     private String[] tabs = { "Vacanze", "Benessere", "Sport","Svago","Ristoranti","Tecnologia","Last Price" };
  
@@ -22,7 +26,10 @@ public class CatActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
- 
+         bundle=getIntent().getExtras();
+       scelta=bundle.getInt("scelta");
+       user=bundle.getString("username");
+     	if (scelta!=1)   Toast.makeText(this, "Accesso effettuato", Toast.LENGTH_LONG).show();
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
@@ -77,6 +84,28 @@ public class CatActivity extends FragmentActivity implements
     public void openDetails(View view){
     	Intent intent=new Intent(this, DettagliActivity.class);
     	startActivity(intent);
+    	
+    }
+   
+    public int getAccess(){
+    	return scelta;
+    }
+    public String getUser(){
+    	return user;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	getMenuInflater().inflate(R.menu.cat, menu);
+    	return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	String i=(String)item.getTitle() ;
+    	if(i.compareTo("Rosso")==0)  getWindow().getDecorView().setBackgroundColor(android.graphics.Color.RED);
+    	if(i.compareTo("Verde")==0)  getWindow().getDecorView().setBackgroundColor(android.graphics.Color.GREEN);
+    	if(i.compareTo("Giallo")==0)  getWindow().getDecorView().setBackgroundColor(android.graphics.Color.YELLOW);
+    	if(i.compareTo("Blue")==0)  getWindow().getDecorView().setBackgroundColor(android.graphics.Color.BLUE);
+                return super.onOptionsItemSelected(item);
     	
     }
 }

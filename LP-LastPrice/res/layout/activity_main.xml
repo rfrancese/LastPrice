@@ -4,5 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lp_lastprice.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
 
+<TextView
+        android:id="@+id/Rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_marginTop="330dp"
+        android:text="I nostri utenti valutano i nostri servizi"
+         />
+	<TextView
+        android:id="@+id/Rate_T"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_marginTop="350dp"
+        android:text=""
+         />
+	</FrameLayout>

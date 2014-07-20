@@ -9,6 +9,7 @@ public class Amministratore {
 	private String sesso;
 	private int id;
 	private String n_carta;
+	private String email;
 	public Amministratore(){}
 	public Amministratore(String n, String c, String date,String sex, String us, String pw, String nc) {
 		super();

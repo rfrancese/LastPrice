@@ -8,9 +8,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.lp_lastprice.ActiveOffersActivity$PlaceholderFragment" >
 
-    <TextView
+    <ListView android:id="@android:id/list"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:longClickable="true"/>
+<TextView
+        android:id="@+id/label3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
+        android:text="@+id/label"
+        android:textSize="22sp" >
+    </TextView>
 </RelativeLayout>

@@ -3,14 +3,19 @@ package database;
 public class Offerta {
 		private String Nome;
 		private String descrizione;
-		private double prezzo;
+		private String prezzo;
 		private String venditore;
 		private String scadenza;
 		private String asta;
 		private String luogo;
 		private String categoria;
+		private int id;
+		private String lat;
+		private String lng;
+		private double voto;
 		
-		public Offerta(String x, String y , double p, String v , String sc,String place,String cat){
+		public Offerta(){}
+		public Offerta(String x, String y , String p, String v , String sc,String place,String cat){
 			Nome=x;
 			descrizione=y;
 			prezzo=p;
@@ -19,6 +24,25 @@ public class Offerta {
 			asta="no";
 			luogo=place;
 			categoria=cat;
+			voto=0;
+		}
+		public double calculate(double v){
+			return (voto+v)/2;
+		}
+		public void setLat(String s){
+			lat=s;
+		}
+		public void setLng(String s){
+			lng=s;
+		}
+		public String getLat(){
+			return lat;
+		}
+		public String getLng(){
+			return lng;
+		}
+		public void setId(int x){
+			id=x;
 		}
 		public void setName(String x){
 			Nome=x;
@@ -26,7 +50,7 @@ public class Offerta {
 		public void setDesc(String x){
 			descrizione=x;
 		}
-		public void setPrice(double x){
+		public void setPrice(String x){
 			prezzo=x;
 		}
 		public void setSeller(String x){
@@ -51,7 +75,7 @@ public class Offerta {
 		public String getDesc(){
 			return descrizione;
 		}
-		public double getPrice(){
+		public String getPrice(){
 			return prezzo;
 		}
 		public String getVenditore(){
@@ -66,5 +90,11 @@ public class Offerta {
 		}
 		public String getCategoria(){
 			return categoria;
+		}
+		public int getId(){
+			return id;
+		}
+		public void setAsta(String s){
+			asta=s;
 		}
 }

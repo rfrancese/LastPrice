@@ -1,64 +1,54 @@
 package com.example.lp_lastprice;
-
+import database.DbUsersHelper;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 import android.os.Build;
+import android.content.DialogInterface;
+// Lista acquisti effettuati dagli utenti visualizzabili dall'amministratore
+public class TransactionActivity extends ListActivity {
+	String[] values ;
+	DbUsersHelper db = new DbUsersHelper(this);
+	  public void onCreate(Bundle icicle) {
+		    super.onCreate(icicle);
+		    
+	    	// mi metto nel contesto dell'activity
+	    	int length= db.getSales().length;
 
-public class TransactionActivity extends Activity {
+	    	values = new String[length] ;
+	    	for (int i=0; i<length;i++){
+	    		values[i]=db.getSales()[i].getDescr();
+	    		
+	    	
+	    }    // use your custom layout
+	 
+		    // use your custom layout
+		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		        R.layout.activity_transaction, R.id.label_usr, values);
+		    setListAdapter(adapter);
+		  }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_transaction);
-
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.transaction, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_transaction,
-					container, false);
-			return rootView;
-		}
-	}
-
-}
+		  @Override
+		  protected void onListItemClick(ListView l, View v, int position, long id) {
+		    String item = (String) getListAdapter().getItem(position);
+		    String descr=item;
+		    DbUsersHelper db=new DbUsersHelper(this);
+		    String seller=db.getSellerSale(descr);
+		    int utenti = db.getUserSale(descr);
+		    
+		    Toast.makeText(this, "Acquistato da: " + utenti + " utenti ," +" venduto da: " + seller, Toast.LENGTH_LONG).show();
+		   
+		  }
+		} 

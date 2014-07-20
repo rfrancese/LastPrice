@@ -20,7 +20,7 @@
         android:layout_below="@+id/rimborsi"
         android:layout_marginTop="67dp"
         android:text="@string/utenti"
-        android:onClick="gestisciUsers" />
+        android:onClick="deleteUser" />
 
     <Button
         android:id="@+id/transazioni"
@@ -28,9 +28,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/utenti"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="85dp"
         android:text="@string/transazioni"
-        android:onClick="visualizzaTransazioni" />
+        android:onClick="getTransaction" />
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/transazioni"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp"
+        android:text="Logout"
+        android:onClick="logout" />
 
     <TextView
         android:id="@+id/textView1"
@@ -47,7 +57,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp"
-        android:onClick="rimborsi"
+        android:onClick="refunds"
         android:text="@string/rimborsi" />
 
 </RelativeLayout>

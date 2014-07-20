@@ -1,64 +1,68 @@
 package com.example.lp_lastprice;
 
+import database.DbUsersHelper;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 import android.os.Build;
+import android.content.DialogInterface;
+// Restituisce all'amministratore la lista di utenti attivi
+public class ActiveUsersActivity extends ListActivity {
+	String[] values ;
+	DbUsersHelper db = new DbUsersHelper(this);
+	  public void onCreate(Bundle icicle) {
+		    super.onCreate(icicle);
+		    
+	    	// mi metto nel contesto dell'activity
+	    	int length= db.getUsers().length;
 
-public class ActiveUsersActivity extends Activity {
+	    	values = new String[length] ;
+	    	for (int i=0; i<length;i++){
+	    		values[i]=db.getUsers()[i].getUser();
+	    		
+	    	
+	    }    // use your custom layout
+	 
+		    // use your custom layout
+		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		        R.layout.activity_active_users, R.id.label_usr, values);
+		    setListAdapter(adapter);
+		  }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_active_users);
-
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.active_users, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_active_users,
-					container, false);
-			return rootView;
-		}
-	}
-
-}
+		  @Override
+		  protected void onListItemClick(ListView l, View v, int position, long id) {
+		    String item = (String) getListAdapter().getItem(position);
+		    final int posizione=position;
+		    
+		    Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+		    new AlertDialog.Builder(this)
+		    .setTitle("Elimina Utente")
+		    .setMessage("Sei sicuro di voler eliminare questo utente?")
+		    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		            // continue with delete
+		        	long i= db.deleteUser(values[posizione]);
+		        	finish();
+		        }
+		     })
+		    .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		            // do nothing
+		        }
+		     })
+		    .setIcon(android.R.drawable.ic_dialog_alert)
+		     .show();
+		  }
+		} 

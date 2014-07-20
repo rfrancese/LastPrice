@@ -1,6 +1,7 @@
 package com.example.lp_lastprice;
 
 import android.app.Activity;
+import android.widget.TextView;
 import database.DbUsersHelper;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -12,18 +13,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.content.Intent;
-
+// Home dell'applicazione
 public class MainActivity extends Activity {
-
+		private int id=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
+		DbUsersHelper db=new DbUsersHelper(this);
+		TextView rate=(TextView)findViewById(R.id.Rate_T);
+		TextView ratex=(TextView)findViewById(R.id.Rate);
+		ratex.setVisibility(View.GONE);
+		boolean b=db.isEmptyVote();
+		if(b==false){
+			double voto=db.getVoto();
+			ratex.setVisibility(View.VISIBLE);
+			rate.setText(String.valueOf(voto)+"/5.0");
+		}
 	}
 
 	@Override
@@ -36,13 +47,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+		MainActivity.this.finish();
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -67,7 +72,13 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	public void openOffer(View view){
+	 Bundle bundle=new Bundle();
+	 bundle.putInt("scelta", 1);
+	 bundle.putString("username", "no user");
 		Intent intent=new Intent (this, CatActivity.class);
+		intent.putExtras(bundle);
 		startActivity(intent);
 		}
+
+	
 }

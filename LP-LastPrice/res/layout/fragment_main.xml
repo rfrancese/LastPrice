@@ -19,30 +19,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
-        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/button1"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="270dp"
         android:text="@string/login"
         android:onClick="createLogin"
          />
-
+   
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
+        
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="200dp"
         android:text="@string/offerte"
         android:onClick="openOffer" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_above="@+id/button1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+      
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/title_activity_login"
         android:src="@drawable/mrk" />
 

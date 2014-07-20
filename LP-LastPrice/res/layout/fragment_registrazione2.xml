@@ -18,14 +18,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="400dp"
         android:text="@string/tipo_account"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     <RadioGroup
         android:id="@+id/r_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
-        android:layout_marginTop="250dp">
+        android:layout_marginTop="420dp">
     <RadioButton
         android:id="@+id/cl"
         android:layout_width="wrap_content"
@@ -92,7 +92,57 @@
         android:layout_marginTop="130dp"
         android:ems="10"
         android:inputType="number" />
-
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_marginTop="180dp"
+        android:text="Numero Telefono"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<EditText
+        android:id="@+id/telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+       
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:inputType="number" />
+<TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_marginTop="250dp"
+        android:text="Indirizzo"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<EditText
+        android:id="@+id/Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+       
+        android:layout_marginTop="270dp"
+        android:ems="10"
+        android:inputType="text" />
+<TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_marginTop="320dp"
+        android:text="E-mail"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<EditText
+        android:id="@+id/Mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+       
+        android:layout_marginTop="340dp"
+        android:ems="10"
+        android:inputType="text" />
     <Button
         android:id="@+id/conferma_but"
         android:layout_width="wrap_content"
@@ -100,6 +150,7 @@
         android:layout_alignLeft="@+id/editText2"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView3"
+        android:layout_marginTop="520dp"
         android:layout_marginBottom="24dp"
         android:text="@string/confermar" 
         android:onClick="welcome"/>

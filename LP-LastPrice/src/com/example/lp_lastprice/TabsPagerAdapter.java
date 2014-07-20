@@ -3,7 +3,7 @@ package com.example.lp_lastprice;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
- 
+// Adapter per lo scorrimento delle pagine del catalogo
 public class TabsPagerAdapter extends FragmentPagerAdapter {
  
     public TabsPagerAdapter(FragmentManager fm) {

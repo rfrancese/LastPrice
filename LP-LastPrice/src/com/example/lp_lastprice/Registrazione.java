@@ -20,7 +20,7 @@ import database.Utente;
 import android.widget.RadioButton;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
+// Pagina 1 form registrazione
 public class Registrazione extends Activity implements OnClickListener{
 
 	@Override
@@ -69,6 +69,7 @@ public class Registrazione extends Activity implements OnClickListener{
 			startActivity(intent);
 			break;
 			}
+		
 		}
 }
 }

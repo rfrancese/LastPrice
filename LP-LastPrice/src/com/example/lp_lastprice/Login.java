@@ -1,5 +1,7 @@
 package com.example.lp_lastprice;
 import database.*;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.app.Activity;
 import database.DbUsersHelper;
 import android.app.ActionBar;
@@ -15,20 +17,58 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+// Form di login
 public class Login extends Activity {
-	private SessionManagement session;	
+	 public static final String MyPREFERENCES = "MyPrefs" ;
+	 public static final String name = "nameKey"; 
+	   public static final String pass = "passwordKey"; 
+	   public static final String activity="1";
+	   SharedPreferences sharedpreferences;	   
 	private DbUsersHelper db=new DbUsersHelper(this);
+	int n=0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
-
+	 @Override
+	   protected void onResume() {
+		
+	      sharedpreferences=getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+	      Intent i=new Intent(this,MainActivity.class);
+	      
+	      if (sharedpreferences.contains(name))
+	    	  
+	      {
+	      if(sharedpreferences.contains(pass)){
+	    	 
+	    	  
+	    	  if (n==1){
+	    		  
+	    		     i = new Intent(this,WelcomeActivity.class);
+	    		         startActivity(i);
+	    		    	 }
+	    	  else if (n==2){
+	     i = new Intent(this,SellerActivity.class);
+	         startActivity(i);
+	    	 }
+	    	 else if (n==3){
+	    		  i = new Intent(this,AdminActivity.class);
+	 	         startActivity(i); 
+	    	 }
+	      }
+	      else {
+	    	  i=new Intent(this,MainActivity.class);
+	    	  startActivity(i);
+	      }
+	      }
+	      super.onResume();
+	   }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -66,12 +106,20 @@ public class Login extends Activity {
 		}
 	}
 	public void accesso(View view){
+	     Editor editor = sharedpreferences.edit();
+	   
+	      
 		EditText edit_user=(EditText)findViewById(R.id.username);
 		EditText edit_password=(EditText)findViewById(R.id.password);
 		RadioButton cliente = (RadioButton)findViewById(R.id.cliente);
 		RadioButton venditore = (RadioButton)findViewById(R.id.venditore);
 		RadioButton amministratore = (RadioButton)findViewById(R.id.amministratore);
-		int n=1;
+		String u = edit_user.getText().toString();
+		String p = edit_password.getText().toString();
+		editor.putString(name, u);
+		editor.putString(pass, p);
+	
+		
 		if(cliente.isChecked()) n=1;
 		if(venditore.isChecked())n=2;
 		if(amministratore.isChecked())n=3;
@@ -81,30 +129,41 @@ public class Login extends Activity {
 		if(n==1){
 		boolean b=db.searchUser(user, password, n);
 		if(b){
-		session.createLoginSession(user, "info@root.com");
+			Bundle bundle=new Bundle();
+  		  bundle.putString("username", u);
 		Intent intent = new Intent(this, WelcomeActivity.class);
+		intent.putExtras(bundle);
 		startActivity(intent);
 		}
 		
 		else  Toast.makeText(this, "Impossibile Accedere", Toast.LENGTH_LONG).show();
 	}
 		if (n==2) {
-			session.createLoginSession(user, "info@root.com");
+			boolean b=db.searchUser(user, password, n);
+			if(b){
+				Bundle bundle=new Bundle();
+		  		  bundle.putString("username", u);
 			Intent intent =new Intent(this, SellerActivity.class);
-			startActivity(intent);}
-		
+			intent.putExtras(bundle);
+			startActivity(intent);
+			}
+			else  Toast.makeText(this, "Impossibile Accedere Come Seller", Toast.LENGTH_LONG).show();
+		}
 		if(n==3){
-			session.createLoginSession(user, "info@root.com");
+			boolean b=db.searchUser(user, password, n);
+			if(b){
+				
+			
 			Intent intent =new Intent(this, AdminActivity.class);
 			startActivity(intent);
+			}
+			else  Toast.makeText(this, "Impossibile Accedere Come Admin", Toast.LENGTH_LONG).show();
 		}
+		editor.commit();
 		}
 	public void registrati(View view){
 		Intent intent = new Intent(this, Registrazione.class);
 		startActivity(intent);
 	}
-	public void gestioneOfferte(View view){
-		Intent intent=new Intent(this, SellerActivity.class);
-		startActivity(intent);
-	}
+
 }
